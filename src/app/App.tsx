@@ -78,7 +78,7 @@ const App = () => {
                 </Button>
             </div>  
 
-            {deliveryFee &&
+            {deliveryFee !== undefined &&
                 <div className={classes.containerWithTopMargin} id='calculated-fee'>
                     <Typography variant='h5'>
                         <strong>{`FEE is ${deliveryFee} €`}</strong>
