@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.js": "/delivery_fee_calculator/static/js/main.eacbe5c2.chunk.js",
-    "main.js.map": "/delivery_fee_calculator/static/js/main.eacbe5c2.chunk.js.map",
-    "runtime-main.js": "/delivery_fee_calculator/static/js/runtime-main.3a2a3b39.js",
-    "runtime-main.js.map": "/delivery_fee_calculator/static/js/runtime-main.3a2a3b39.js.map",
-    "static/js/2.a07b0ea8.chunk.js": "/delivery_fee_calculator/static/js/2.a07b0ea8.chunk.js",
-    "static/js/2.a07b0ea8.chunk.js.map": "/delivery_fee_calculator/static/js/2.a07b0ea8.chunk.js.map",
+    "main.js": "/delivery_fee_calculator/static/js/main.b841b4de.chunk.js",
+    "main.js.map": "/delivery_fee_calculator/static/js/main.b841b4de.chunk.js.map",
+    "runtime-main.js": "/delivery_fee_calculator/static/js/runtime-main.52faa011.js",
+    "runtime-main.js.map": "/delivery_fee_calculator/static/js/runtime-main.52faa011.js.map",
+    "static/js/2.439c3504.chunk.js": "/delivery_fee_calculator/static/js/2.439c3504.chunk.js",
+    "static/js/2.439c3504.chunk.js.map": "/delivery_fee_calculator/static/js/2.439c3504.chunk.js.map",
     "index.html": "/delivery_fee_calculator/index.html",
-    "static/js/2.a07b0ea8.chunk.js.LICENSE.txt": "/delivery_fee_calculator/static/js/2.a07b0ea8.chunk.js.LICENSE.txt"
+    "static/js/2.439c3504.chunk.js.LICENSE.txt": "/delivery_fee_calculator/static/js/2.439c3504.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.3a2a3b39.js",
-    "static/js/2.a07b0ea8.chunk.js",
-    "static/js/main.eacbe5c2.chunk.js"
+    "static/js/runtime-main.52faa011.js",
+    "static/js/2.439c3504.chunk.js",
+    "static/js/main.b841b4de.chunk.js"
   ]
 }
