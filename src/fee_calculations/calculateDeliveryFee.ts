@@ -18,37 +18,24 @@ const RUSH_MULTIPLIER = 1.1
 
 export const calculateDeliveryFee = (input: CalculatorInput): number => {
 
-    // TODO: tarkistetaan vielä tässä ensin, että syötetään oikeanlaista dataa
     const { cartValueEuros, deliveryDistanceMeters, amountItems, time} = input
 
     if (cartValueEuros >= NO_FEE_LIMIT) return 0
 
     let fee = 0
-
-    const smallValueDependentExtra = calculateSmallValueExtra(cartValueEuros, SMALL_VALUE_LIMIT)
-    fee = addNumbersHandleJSImprecision(fee, smallValueDependentExtra)
-
-    const distanceDependentExtra = calculateDistanceDependentExtra(
-        deliveryDistanceMeters, BASE_DISTANCE, EXTRA_FOR_BASE_DISTANCE, ADDITIONAL_DISTANCE, EXTRA_FOR_ADDITIONAL_DISTANCE)
-    fee = addNumbersHandleJSImprecision(fee, distanceDependentExtra)
-    
-    const amountDependentExtra = calculateAmountDependentExtra(amountItems, AMOUNT_LIMIT, AMOUNT_EXTRA)
-    fee = addNumbersHandleJSImprecision(fee, amountDependentExtra)
-
-    const timeDependentExtra = calculateTimeDependentExtra(time, RUSH_DAY, RUSH_START_HOUR, RUSH_END_HOUR, fee, RUSH_MULTIPLIER)
-    fee = addNumbersHandleJSImprecision(fee, timeDependentExtra)
-
+    fee += calculateSmallValueExtra(cartValueEuros, SMALL_VALUE_LIMIT)
+    fee += calculateDistanceDependentExtra(
+        deliveryDistanceMeters, BASE_DISTANCE, EXTRA_FOR_BASE_DISTANCE, ADDITIONAL_DISTANCE, EXTRA_FOR_ADDITIONAL_DISTANCE)   
+    fee += calculateAmountDependentExtra(amountItems, AMOUNT_LIMIT, AMOUNT_EXTRA)
+    fee +=  calculateTimeDependentExtra(time, RUSH_DAY, RUSH_START_HOUR, RUSH_END_HOUR, fee, RUSH_MULTIPLIER)
     return Math.min(fee, MAX_FEE)
 }   
 
-export const addNumbersHandleJSImprecision = (number1: number, number2: number): number => {
-    return (number1 * 100 + number2 * 100) / 100
-}
 
 
 export const calculateSmallValueExtra = (cartValueEuros: number, limit: number): number => {
     if (cartValueEuros > limit || cartValueEuros < 0) return 0
-    return (limit * 100 - cartValueEuros * 100) / 100
+    return parseFloat((limit - cartValueEuros).toFixed(3))
 }
 
 
@@ -85,7 +72,7 @@ export const calculateTimeDependentExtra = (
     const { day, hours } = getDateTimeComponents(time)
     if (day === rushDay) {
         if (hours >= rushStart && hours < rushEnd) {
-            return (multiplier * 10 - 10) * cumulatedFee / 10
+            return parseFloat(((multiplier - 1) * cumulatedFee).toFixed(3))
         }
     }
     return 0

@@ -101,8 +101,63 @@ export const DELIVERY_FEE_MAX_LIMIT_DATA: { input: CalculatorInput, expectedResu
     },
 ]
 
-// TODO: vielä lisää yleisiä testejä mittaamaan, että tuleeko oikea tulos, kun arvo välillä 0-15 euroa!!!
+export const DELIVERY_FEE_0_15_EUROS_DATA: { input: CalculatorInput, expectedResult: number }[] = [
+    {
+        input: {
+            cartValueEuros: 2.35,
+            deliveryDistanceMeters: 500,
+            amountItems: 3,
+            time: 'Fri, 15 Oct 2021 12:20:01 GMT'
+        },
+        expectedResult: 9.65
+    },
+    {
+        input: {
+            cartValueEuros: 9,
+            deliveryDistanceMeters: 500,
+            amountItems: 1,
+            time: 'Fri, 15 Oct 2021 12:20:01 GMT'
+        },
+        expectedResult: 3
+    },
+    {
+        input: {
+            cartValueEuros: 5.6,
+            deliveryDistanceMeters: 1510,
+            amountItems: 5,
+            time: 'Fri, 15 Oct 2021 12:20:01 GMT'
+        },
+        expectedResult: 8.9
+    },
+    {
+        input: {
+            cartValueEuros: 10,
+            deliveryDistanceMeters: 2000,
+            amountItems: 5,
+            time: 'Fri, 15 Oct 2021 17:20:01 GMT'
+        },
+        expectedResult: 4.95
+    },
+    {
+        input: {
+            cartValueEuros: 8.73,
+            deliveryDistanceMeters: 1030,
+            amountItems: 5,
+            time: 'Fri, 15 Oct 2021 17:20:01 GMT'
+        },
+        expectedResult: 5.247
+    },
+    {
+        input: {
+            cartValueEuros: 8.73,
+            deliveryDistanceMeters: 1030,
+            amountItems: 5,
+            time: 'Fri, 15 Oct 2021 12:20:01 GMT'
+        },
+        expectedResult: 4.77
+    },
 
+]
 
 
 

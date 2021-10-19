@@ -7,7 +7,7 @@ import Button from '@mui/material/Button'
 import { useStyles } from '../styles/styles'
 import { CalculatorInput } from '../types/CalculatorInput'
 import { calculateDeliveryFee } from '../fee_calculations/calculateDeliveryFee'
-
+import { inputFieldsHaveProperValues } from './inputFieldsHaveProperValues'
 
 
 const App = () => {
@@ -16,30 +16,25 @@ const App = () => {
     const [deliveryDistance, setDeliveryDistance] = useState('')
     const [amountItems, setAmountItems] = useState('')
     const [dateTime, setDateTime] = useState<Date | null>(getDefaultDateTime(new Date()))
-    const [deliveryFee, setDeliveryFee] = useState<number | undefined>(undefined)
+    const [deliveryFee, setDeliveryFee] = useState<string | null>(null)
     const classes = useStyles()
 
     useEffect(() => {
-        if (deliveryFee) setDeliveryFee(undefined)
+        if (deliveryFee) setDeliveryFee(null)
     },[cartValue, deliveryDistance, amountItems, dateTime])
 
     const calculateFee = () => {
         if (!dateTime) return
         const calculatorInput: CalculatorInput = {
-            cartValueEuros: parseFloat(cartValue),
+            cartValueEuros: parseFloat(cartValue.replace(',', '.')),
             deliveryDistanceMeters: parseInt(deliveryDistance),
             amountItems: parseInt(amountItems),
             time: dateTime.toUTCString()
         }
         const result = calculateDeliveryFee(calculatorInput)
-        setDeliveryFee(result)
+        console.log(result)
+        setDeliveryFee(result.toFixed(2))
     }
-
-    const allFieldsHaveValues = () => {
-        return cartValue && deliveryDistance && amountItems && dateTime
-    }
-
-
 
 
     return (
@@ -72,16 +67,16 @@ const App = () => {
                     id='button-calculate'
                     variant='contained'
                     onClick={calculateFee}
-                    disabled={!allFieldsHaveValues()}
+                    disabled={!inputFieldsHaveProperValues(cartValue, deliveryDistance, amountItems, dateTime)}
                 >
                     CALCULATE
                 </Button>
             </div>  
 
-            {deliveryFee !== undefined &&
+            {deliveryFee !== null &&
                 <div className={classes.containerWithTopMargin} id='calculated-fee'>
                     <Typography variant='h5'>
-                        <strong>{`FEE is ${deliveryFee} €`}</strong>
+                        <strong>{`DELIVERY FEE is ${deliveryFee} €`}</strong>
                     </Typography>
                 </div> 
             }   

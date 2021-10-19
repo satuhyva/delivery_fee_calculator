@@ -8,10 +8,13 @@ export const useStyles = makeStyles(() =>
             flexDirection: 'column',
             justifyContent: 'center',
             alignItems: 'center',
-            marginTop: 50
+            marginTop: 50,
         },
         containerWithTopMargin: {
-            marginTop: 30
+            marginTop: 30,
+        },
+        inputField: {
+            width: 350,
         },
     })
 )

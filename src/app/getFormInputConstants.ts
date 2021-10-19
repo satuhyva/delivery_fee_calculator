@@ -2,9 +2,9 @@ import { FormInputConstants } from '../types/FormInputConstants'
 import { FormInputLabel } from '../types/FormInputLabel'
 
 
-const MAX_CART_VALUE = 10000
-const MAX_DISTANCE = 15000
-const MAX_AMOUNT_ITEMS = 500
+export const MAX_CART_VALUE = 10000
+export const MAX_DISTANCE = 15000
+export const MAX_AMOUNT_ITEMS = 500
 
 
 export const getFormInputConstants = (label: FormInputLabel): FormInputConstants => {

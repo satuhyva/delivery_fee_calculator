@@ -27,7 +27,7 @@ const DateTimeInput: React.FC<DateTimeInputProps> = ({ currentValue, onChange })
                         <TextField 
                             {...props} 
                             id='input-Date and time'
-                            style={{ width: 350 }}
+                            className={classes.inputField}
                             helperText={errorMessage ? errorMessage : ''}
                         />}
                     label='Date and Time'
